@@ -1,0 +1,35 @@
+
+<div class="form">
+  <h3>New Category</h3>
+  </br>
+ <%= form_for @category do |c| %>
+	
+  <div class="form-group row">
+    <%= c.label :name, "Project Name:", class: "col-4 col-form-label" %>
+      <div class="col-8">
+        <%= c.text_field :name, required: true, class: 'form-control', min: 0 %>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <%= c.label :desc, "Description:", class: "col-4 col-form-label" %>
+      <div class="col-8">
+        <%= c.text_field :desc, required: true, class: 'form-control', min: 0 %>
+      </div>
+  </div>
+
+
+  <div class="actions">
+    <%= c.submit "Submit", class: 'btn btn-primary pull-right'  %>
+  </div>
+  
+  <%end%>
+</div>
+
+<style type="text/css">
+  .form{
+        width: 766px;
+    max-width: 100%;
+    padding-left: 28%;
+  }
+</style>

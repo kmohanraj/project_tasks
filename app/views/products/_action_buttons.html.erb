@@ -1,0 +1,72 @@
+<div class="row action-button-margins">
+
+    <div class="col-md-3">
+      <%= link_to "Add New Category", new_category_path, class: "btn btn-outline-primary btn-md" %>
+    </div>
+
+    <div class="col-md-3">
+      <button type="button" class= "btn btn-outline-primary btn-md" data-toggle="modal" data-target="#ModalAddFinance">Add new Product</button>
+    </div>
+
+
+    <div class="col-md-3">
+       <li class="btn btn-outline-primary btn-md"><a href="#">Sort By</a>
+            <ul>
+              <li><%= link_to 'Recent Projects',products_path(order: "recent_project") %></li>
+              <li><%= link_to 'Order by Category Name', products_path(order: "order_by_category_name") %></li>
+              <li><%= link_to 'Order by Username'%></li>
+              <li><%= link_to 'Order by Project Title'%></li>
+            </ul>
+        </li>
+    </div>
+
+    <div class="col-md-3">
+      <% if user_signed_in? %>
+        <b class="hi"> Hi! </b><%= current_user.email %>
+        <b><%= link_to 'Log out', destroy_user_session_path, method: :delete %></b>
+      <%end%>
+    </div>
+  
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalAddFinance" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Products</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="errors_invoice">
+        </div>
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style type="text/css">
+  ul {list-style: none;padding: 0px;margin: 0px;}
+  ul li {display: block;position: relative;float: left;border:1px solid #fff}
+  li ul {display: none;}
+  ul li a {display: block;background: #fff;padding: 5px 10px 5px 10px;text-decoration: none;
+           white-space: nowrap;color: #fff;}
+  ul li a:hover {background: #fff;}
+  li:hover ul {display: block; position: absolute;}
+  li:hover li {float: none;}
+  li:hover a {background: #b9b9b9;}
+  li:hover li a:hover {background: #0275d8;}
+  #drop-nav li ul li {border-top: 0px;}
+  .email{
+    padding-top: 1%;
+  }
+  .hi{
+    color: black;
+    background-color: #94a294;
+  }
+</style>

@@ -1,0 +1,55 @@
+
+<style type="text/css">
+  .form{
+        width: 828px;
+    max-width: 100%;
+    padding-left: 10%;
+  }
+  .all{
+        float: right;
+    margin-right: 21%;
+  }
+</style>
+
+<div class="form">
+<%#= form_for (@product), html: {class: 'finance_form'}, method: :post, remote: true do |f| %>
+<%= form_for Product.new, html: {class: 'finance_form'}, method: :post, remote: true do |f| %>
+
+
+  <div class="form-group row">
+    <%= f.label :user_id, "Customer Name:", class: "col-4 col-form-label" %>
+    <div class="col-8">
+     <%= f.select :user_id, User.order("email ASC").map { |p| [p.email, p.id]}, :prompt => "Select User",class: 'form-control' %>
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :category_id, "Category:", class: "col-4 col-form-label" %>
+    <div class="col-8">
+      <%= f.select :category_id, Category.order("name ASC").map {|x| [x.name, x.id]}, :prompt => "Select Category"%>
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :name, "Project Title:", class: "col-4 col-form-label" %>
+    <div class="col-8">
+     <%= f.text_field :name, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :price, "Project Price:", class: "col-4 col-form-label" %>
+      <div class="col-8">
+        <%= f.number_field :price, required: true, class: 'form-control', min: 0 %>
+      </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit", class: 'btn btn-primary pull-right'  %>
+  </div>
+
+<% end %>
+
+</div>

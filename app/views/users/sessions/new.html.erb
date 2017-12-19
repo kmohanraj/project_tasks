@@ -1,0 +1,38 @@
+<style type="text/css">
+  .form{
+        width: 828px;
+    max-width: 100%;
+    padding-left: 40%;
+  }
+</style>
+
+<div class="form">
+  <h3>Log In</h3>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off", required: true %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="form-group">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  
+  <div class="sign">
+      <%= link_to 'Sign Up', new_user_registration_path %>
+  </div>
+
+</div>

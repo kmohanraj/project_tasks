@@ -1,0 +1,37 @@
+<!-- <div class="table">
+
+ <table>
+ 	<thead>
+ 		<tr>
+		 	<th>Name</th>
+		 	<th>About</th>
+ 		</tr>
+ 	</thead>
+ <tbody>
+ <%# @categories.each do |c| %>
+ 	<tr>
+	 	<td><%#= c.name %></td>
+	 	<td><%#= c.about %></td>
+ 	</tr>
+ <%#end%>
+ </tbody>
+</table>
+</div>
+<br />
+
+<%# if user_signed_in? %>
+	<%#= current_user.email %><br />
+	<%#= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<%# end %>
+ -->
+<div class="container">
+  <%#= render "collection_details" %>
+  <%#= render "flash_messages" %>
+  <%#= render "table" %>
+</div>
+
+
+<div class="col-md-12">
+<%= link_to "Back To All Invoice", products_path, class: "btn btn-info back-btn" %>
+</div>
+

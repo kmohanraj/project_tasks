@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: acution_db23
+test:
+  <<: *default
+  database: acution_test
+production:
+  <<: *default
+  database: acution_production
+  username: acution
+  password: <%= ENV['ACUTION_DATABASE_PASSWORD'] %>

@@ -1,0 +1,54 @@
+<div class="table_collection">
+  <table class='table table-bordered table-hover'>
+    <thead>
+      <tr>
+        <th class='align_center'>S</th>
+        <th class='align_center'>CategoryName</th>
+        <th class='align_center'>Category Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% #if @collections.present? %>
+      <tr class="table-info">
+        <td class="align_center"><%#= @collections.first.reference %></td>
+        <td class="align_center"><%#= @collections.first.invoice.invoice_date %></td>
+        <td class="align_center"><%#= @collections.first.invoice.amount %></td>
+      </tr>
+    <%#end%>
+      <% @categories.each do |collection| %>
+      <tr>
+        <td class="align_center">
+          <%= collection.category_name %>
+        </td>
+        <td class="align_center">
+          <%= collection.desc %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+  <div>
+    <button type="button" class= "btn btn-primary btn-md btn-add-collection" data-toggle="modal" data-target="#ModalAddCollection">Add Collection</button>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ModalAddCollection" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="errors_invoice">
+        </div>
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+</div>
+
