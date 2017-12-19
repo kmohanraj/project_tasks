@@ -12,10 +12,11 @@
     <div class="col-md-3">
        <li class="btn btn-outline-primary btn-md"><a href="#">Sort By</a>
             <ul>
-              <li><%= link_to 'Recent Projects',products_path(order: "recent_project") %></li>
-              <li><%= link_to 'Order by Category Name', products_path(order: "order_by_category_name") %></li>
-              <li><%= link_to 'Order by Username'%></li>
-              <li><%= link_to 'Order by Project Title'%></li>
+              <li><%= link_to 'Recent Projects', products_path(order: "recent_project")%></li>
+              <li><%= link_to 'Order by Project Title', products_path(order: "order_project_title") %></li>
+              <li><%= link_to 'Order by Username', products_path(order: "order_User_name") %></li>
+              <li><%= link_to 'Order by Category Name', products_path(order: "order_category_name") %></li>
+              <p><a href="#" id="asc">Ascending</a></p>
             </ul>
         </li>
     </div>
