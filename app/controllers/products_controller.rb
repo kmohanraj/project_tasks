@@ -1,20 +1,18 @@
 class ProductsController < ApplicationController
-  # before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_new_product, only: [:index, :new, :create]
   require 'will_paginate/array'
 
   def index
-    products = Product.order(created_at: :asc) if params[:order] == "latest"
-    products = Product.order(name: :asc) if params[:order] == "project_title"
-    products = Product.order(user_id: :asc) if params[:order] == "user_name"
-    products = Product.order(category_id: :asc) if params[:order] == "category_name"
-   # @products = products.paginate(page: params[:page]).order("created_at DESC").per_page(2)
-    @products = products.page(params[:page]).per_page(3)
-    respond_to do |format|
-      format.json {render json: @products, status: :ok }
-      format.js
-      format.html
-    end
+      products = Product.order(created_at: :asc) if params[:order] == "latest"
+      products = Product.order(name: :asc) if params[:order] == "project_title"
+      products = Product.all if params[:order].nil?
+      @products = products.page(params[:page]).per_page(3)
+      respond_to do |format|
+        format.json {render json: @products, status: :ok }
+        format.js
+        format.html
+      end
   end
 
   def create

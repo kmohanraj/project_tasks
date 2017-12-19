@@ -13,9 +13,7 @@
        <li class="btn btn-outline-primary btn-md"><a href="#">Sort By</a>
             <ul>
               <li><%= link_to 'Recent Projects',products_path(order: "latest") %></li>
-              <li><%= link_to 'Order by Project Title',products(order: "project_title")%></li>
-              <li><%= link_to 'Order by Username', products_path(order: "user_name")%></li>
-              <li><%= link_to 'Order by Category Name', products_path(order: "category_name") %></li>
+              <li><%= link_to 'Order by Project Title',products_path(order: "project_title")%></li>
             </ul>
         </li>
     </div>
