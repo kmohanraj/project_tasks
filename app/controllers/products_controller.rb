@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
       products = Product.order(created_at: :asc) if params[:order] == "latest"
       products = Product.order(name: :asc) if params[:order] == "project_title"
       products = Product.all if params[:order].nil?
-      @products = products.page(params[:page]).per_page(3)
+      @products = products.page(params[:page]).per_page(2)
       respond_to do |format|
         format.json {render json: @products, status: :ok }
         format.js
